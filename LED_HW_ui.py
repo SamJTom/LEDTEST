@@ -63,6 +63,7 @@ class Ui_MainWindow(object):
             self.PressIndicator.setChecked(True)
         else:
             GPIO.output(pin, GPIO.LOW)
+            self.PressIndicator.setChecked(False)
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
