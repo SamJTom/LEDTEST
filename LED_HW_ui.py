@@ -44,10 +44,12 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
-        self.LedButton.click.connect(self.PressIndicator.toggle)
+        self.LedButton.clicked.connect(self.PressIndicator.toggle)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
-        self.LedButton.click.connect(self.LED)
-
+        self.LedButton.clicked.connect(self.LED)
+        self.LedButton.setCheckable==True
+        #self.LedButton.isCheckable==False
+        self.LedButton.setChecked==False
         GPIO.setmode(GPIO.BCM)
         pin = 18
         GPIO.setup(pin, GPIO.OUT)
@@ -56,7 +58,7 @@ class Ui_MainWindow(object):
     def LED(self):
         pin = 18
         
-        if self.LedButton.clicked == True:
+        if self.LedButton.isChecked == True:
             GPIO.output(pin, GPIO.HIGH)
         else:
             GPIO.output(pin, GPIO.LOW)
