@@ -44,15 +44,15 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
-        self.LedButton.clicked.connect(self.PressIndicator.toggle)
+        self.LedButton.click.connect(self.PressIndicator.toggle)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
-        self.LedButton.clicked.connect(self.LED)
+        self.LedButton.click.connect(self.LED)
 
         GPIO.setmode(GPIO.BCM)
         pin = 18
         GPIO.setup(pin, GPIO.OUT)
         GPIO.output(pin, GPIO.LOW)
-
+        
     def LED(self):
         pin = 18
         
