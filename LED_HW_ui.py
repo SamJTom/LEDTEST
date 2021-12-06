@@ -60,6 +60,7 @@ class Ui_MainWindow(object):
         
         if self.LedButton.isChecked() == True:
             GPIO.output(pin, GPIO.HIGH)
+            self.PressIndicator.setChecked(True)
         else:
             GPIO.output(pin, GPIO.LOW)
     def retranslateUi(self, MainWindow):
