@@ -66,18 +66,6 @@ class Ui_MainWindow(object):
         GPIO.output(pin, GPIO.LOW)
         
         
-        
-
-        
-        if GPIO.input(pin) == GPIO.HIGH:
-            self.PressIndicator.setChecked(True)
-
-        else:
-            self.PressIndicator.setChecked(False)
-        GPIO.add_event_detect(pin2, GPIO.RISING)
-        if GPIO.event_detected(pin2):
-            print("Hello, is it me you're looking for?")
-        GPIO.cleanup()
   
 
     def LED(self):
