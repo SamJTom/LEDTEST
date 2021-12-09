@@ -52,26 +52,20 @@ class Ui_MainWindow(object):
         self.LedButton.isCheckable==False
         self.LedButton.setChecked(False)
 
-        self.PressIndicator.toggled.connect(self.short)
+        #self.PressIndicator.toggled.connect(self.short)
         #self.PressIndicator.event(self.short)
         #self.PressIndicator.toggled==False
-        self.PressIndicator.setCheckable(True)
-        self.PressIndicator.setChecked(False)
-        self.PressIndicator.isCheckable==False
+        #self.PressIndicator.setCheckable(True)
+        #self.PressIndicator.setChecked(False)
+        #self.PressIndicator.isCheckable==False
+        self.PressIndicator(self.short)
         GPIO.setmode(GPIO.BCM)
         pin = 18
         
         GPIO.setup(pin, GPIO.OUT)
         
         GPIO.output(pin, GPIO.LOW)
-        GPIO.setmode(GPIO.BCM)
-        pin=17
-        GPIO.setup(pin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-        GPIO.add_event_detect(pin, GPIO.RISING)
-        if GPIO.input(pin) == GPIO.HIGH:
-            self.PressIndicator.setChecked(True)
-        if GPIO.event_detected(pin):
-            self.PressIndicator.setChecked(True)
+        
   
 
     def LED(self):
