@@ -69,19 +69,33 @@ class Ui_MainWindow(object):
   
 
     def LED(self):
-        GPIO.setmode(GPIO.BCM)
-        pin = 18
+        #GPIO.setmode(GPIO.BCM)
+        #pin = 18
         
-        GPIO.setup(pin, GPIO.OUT)
+        #GPIO.setup(pin, GPIO.OUT)
         
-        GPIO.output(pin, GPIO.LOW)
-        pin = 18
+        #GPIO.output(pin, GPIO.LOW)
+        #pin = 18
         
         if self.LedButton.isChecked() == True:
+            GPIO.setmode(GPIO.BCM)
+            pin = 18
+        
+            GPIO.setup(pin, GPIO.OUT)
+        
+            GPIO.output(pin, GPIO.LOW)
+            #pin = 18
             GPIO.output(pin, GPIO.HIGH)
             self.PressIndicator.setChecked(True)
             
         else:
+            GPIO.setmode(GPIO.BCM)
+            pin = 18
+        
+            GPIO.setup(pin, GPIO.OUT)
+        
+            GPIO.output(pin, GPIO.LOW)
+            #pin = 18
             GPIO.output(pin, GPIO.LOW)
             self.PressIndicator.setChecked(False)
     def retranslateUi(self, MainWindow):
