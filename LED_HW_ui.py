@@ -72,6 +72,7 @@ class Ui_MainWindow(object):
         pin = 18
         
         if self.LedButton.isChecked() == True:
+            GPIO.setmode(GPIO.BCM)
             pin2 = 17
             GPIO.output(pin2, GPIO.HIGH)
             #self.PressIndicator.setChecked(True)
@@ -81,13 +82,13 @@ class Ui_MainWindow(object):
                 self.PressIndicator.setChecked(True)
 
         else:
-            GPIO.output(pin, GPIO.LOW)
+            GPIO.setmode(GPIO.BCM)
             pin2 = 17
-            GPIO.output(pin2, GPIO.HIGH)
+            GPIO.output(pin2, GPIO.LOW)
             
             GPIO.setup(pin2, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
             if GPIO.input(pin2) == GPIO.HIGH:
-                self.PressIndicator.setChecked(True)
+                self.PressIndicator.setChecked(False)
 
             #self.PressIndicator.setChecked(False)
     def retranslateUi(self, MainWindow):
