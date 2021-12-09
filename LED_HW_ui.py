@@ -12,15 +12,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 import RPi.GPIO as GPIO
 pin2 = 17
 GPIO.setup(pin2, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-if GPIO.input(pin2) == GPIO.HIGH:
-    self.PressIndicator.setChecked(True)
 
-else:
-    self.PressIndicator.setChecked(False)
-GPIO.add_event_detect(pin2, GPIO.RISING)
-if GPIO.event_detected(pin2):
-    print("Hello, is it me you're looking for?")
-GPIO.cleanup()
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -78,15 +70,15 @@ class Ui_MainWindow(object):
         
 
         #pin2 = 17
-        #if GPIO.input(pin2) == GPIO.HIGH:
-            #self.PressIndicator.setChecked(True)
+        if GPIO.input(pin2) == GPIO.HIGH:
+            self.PressIndicator.setChecked(True)
 
-        #else:
-            #self.PressIndicator.setChecked(False)
-        #GPIO.add_event_detect(pin2, GPIO.RISING)
-        #if GPIO.event_detected(pin2):
-            #print("Hello, is it me you're looking for?")
-        #GPIO.cleanup()
+        else:
+            self.PressIndicator.setChecked(False)
+        GPIO.add_event_detect(pin2, GPIO.RISING)
+        if GPIO.event_detected(pin2):
+            print("Hello, is it me you're looking for?")
+        GPIO.cleanup()
   
 
     def LED(self):
