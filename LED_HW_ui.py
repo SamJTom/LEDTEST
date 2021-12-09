@@ -80,24 +80,38 @@ class Ui_MainWindow(object):
         if self.LedButton.isChecked() == True:
             GPIO.setmode(GPIO.BCM)
             pin = 18
-        
+
+            pin2 = 17
+            GPIO.setup(pin2, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
             GPIO.setup(pin, GPIO.OUT)
         
             GPIO.output(pin, GPIO.LOW)
             #pin = 18
             GPIO.output(pin, GPIO.HIGH)
-            self.PressIndicator.setChecked(True)
+            
+            if GPIO.input(pin2) == GPIO.HIGH:
+                self.PressIndicator.setChecked(True)
+            else:
+                self.PressIndicator.setChecked(False)
+
+            
             
         else:
             GPIO.setmode(GPIO.BCM)
             pin = 18
+            pin2= 17
+            GPIO.setup(pin2, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
         
             GPIO.setup(pin, GPIO.OUT)
         
             GPIO.output(pin, GPIO.LOW)
             #pin = 18
             GPIO.output(pin, GPIO.LOW)
-            self.PressIndicator.setChecked(False)
+            if GPIO.input(pin2) == GPIO.HIGH:
+                self.PressIndicator.setChecked(True)
+            else:
+                self.PressIndicator.setChecked(False)
+            
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
