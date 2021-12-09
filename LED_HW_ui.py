@@ -85,6 +85,7 @@ class Ui_MainWindow(object):
         self.PressIndicator.setText(_translate("MainWindow", "O/I"))
 
     def short(self):
+        GPIO.setmode(GPIO.BCM)
         pin = 17
         GPIO.setup(pin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
         
