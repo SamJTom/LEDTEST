@@ -88,6 +88,10 @@ class Ui_MainWindow(object):
             self.PressIndicator.setChecked(True)
             
         else:
+            GPIO.setmode(GPIO.BCM)
+            pin = 18
+        
+            GPIO.setup(pin, GPIO.OUT)
             GPIO.output(pin, GPIO.LOW)
             self.PressIndicator.setChecked(False)
     def retranslateUi(self, MainWindow):
