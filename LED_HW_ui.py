@@ -84,5 +84,5 @@ class Ui_MainWindow(object):
         self.LedButton.setText(_translate("MainWindow", "LED "))
         self.PressIndicator.setText(_translate("MainWindow", "O/I"))
 
-    def short(self):
+    #def short(self):
 
