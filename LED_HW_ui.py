@@ -57,15 +57,17 @@ class Ui_MainWindow(object):
         self.PressIndicator.setCheckable(True)
         self.PressIndicator.setChecked(False)
         self.PressIndicator.isCheckable==False
-        #GPIO.setmode(GPIO.BCM)
+        GPIO.setmode(GPIO.BCM)
         pin = 18
+        pin2 = 17
         GPIO.setup(pin, GPIO.OUT)
+        
         GPIO.output(pin, GPIO.LOW)
-        #pin2 = 17
-        GPIO.setup(pin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+        
+        GPIO.setup(pin2, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
         
 
-        pin2 = 17
+        #pin2 = 17
         if GPIO.input(pin2) == GPIO.HIGH:
             self.PressIndicator.setChecked(True)
 
@@ -75,51 +77,7 @@ class Ui_MainWindow(object):
         if GPIO.event_detected(pin2):
             print("Hello, is it me you're looking for?")
         GPIO.cleanup()
-
-
-
-
-
-        import time
-        import RPi.GPIO as GPIO
-
-        # Use the GPIO numbers, *not* the physical pin numbers
-        #GPIO.setmode(GPIO.BCM)
-
-        # Use GPIO 17, which is physical pin 11
-        pin2 = 17
-        GPIO.setup(pin2, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-
-        start_time = time.time()
-        elapsed_time = 0.0
-        while elapsed_time < 10:
-
-            if GPIO.input(pin2) == GPIO.HIGH:
-                print("It's pressed!!!")
-
-            time.sleep(0.1) 
-            elapsed_time = time.time() - start_time
-
-
-        def my_callback(channel):
-            print("Hello from the other sideeeeee")
-
-        GPIO.add_event_detect(pin2, GPIO.RISING)
-        GPIO.add_event_callback(pin2, my_callback)
-
-        print("Now, we wait for an event!  Type Ctl+C to quit.")
-        try:
-            while True:
-                if GPIO.event_detected(pin2):
-                    print("Hello, is it me you're looking for?")
-                    break 
-        except KeyboardInterrupt:
-            pass
-
-        GPIO.cleanup()    
-
-
-
+  
 
     def LED(self):
         pin = 18
