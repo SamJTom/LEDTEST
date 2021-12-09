@@ -59,16 +59,22 @@ class Ui_MainWindow(object):
         #self.PressIndicator.setChecked(False)
         #self.PressIndicator.isCheckable==False
         
+        #GPIO.setmode(GPIO.BCM)
+        #pin = 18
+        
+        #GPIO.setup(pin, GPIO.OUT)
+        
+        #GPIO.output(pin, GPIO.LOW)
+        
+  
+
+    def LED(self):
         GPIO.setmode(GPIO.BCM)
         pin = 18
         
         GPIO.setup(pin, GPIO.OUT)
         
         GPIO.output(pin, GPIO.LOW)
-        
-  
-
-    def LED(self):
         pin = 18
         
         if self.LedButton.isChecked() == True:
@@ -86,22 +92,7 @@ class Ui_MainWindow(object):
 
     def short(self):
         pin = 17
-        GPIO.setup(pin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-        
-        if GPIO.input(pin) == GPIO.HIGH:
-            self.PressIndicator.setChecked(True)
-
-        else:
-            self.PressIndicator.setChecked(False)
-
-            
-        
-
-        
-        GPIO.add_event_detect(pin, GPIO.RISING)
-        if GPIO.event_detected(pin):
-            print("Hello, is it me you're looking for?")
-        GPIO.cleanup()
+       
 
 
 
