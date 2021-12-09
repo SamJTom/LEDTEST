@@ -64,8 +64,11 @@ class Ui_MainWindow(object):
         GPIO.setup(pin, GPIO.OUT)
         
         GPIO.output(pin, GPIO.LOW)
+        GPIO.setmode(GPIO.BCM)
         pin=17
         GPIO.add_event_detect(pin, GPIO.RISING)
+        if GPIO.input(pin) == GPIO.HIGH:
+            self.PressIndicator.setChecked(True)
         if GPIO.event_detected(pin):
             self.PressIndicator.setChecked(True)
   
