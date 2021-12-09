@@ -52,7 +52,7 @@ class Ui_MainWindow(object):
         self.LedButton.isCheckable==False
         self.LedButton.setChecked(False)
 
-        self.PressIndicator.toggle.connect(self.short)
+        self.PressIndicator.toggled.connect(self.short)
         #self.PressIndicator.event(self.short)
         #self.PressIndicator.toggled==False
         self.PressIndicator.setCheckable(True)
