@@ -10,8 +10,7 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 import RPi.GPIO as GPIO
-pin2 = 17
-GPIO.setup(pin2, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -53,7 +52,7 @@ class Ui_MainWindow(object):
         self.LedButton.isCheckable==False
         self.LedButton.setChecked(False)
 
-        #self.PressIndicator.toggle.connect(self.short)
+        self.PressIndicator.toggle.connect(self.short)
         #self.PressIndicator.event(self.short)
         #self.PressIndicator.toggled==False
         self.PressIndicator.setCheckable(True)
@@ -61,16 +60,16 @@ class Ui_MainWindow(object):
         self.PressIndicator.isCheckable==False
         GPIO.setmode(GPIO.BCM)
         pin = 18
-        #pin2 = 17
+        
         GPIO.setup(pin, GPIO.OUT)
         
         GPIO.output(pin, GPIO.LOW)
         
-        #GPIO.setup(pin2, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+        
         
 
-        #pin2 = 17
-        if GPIO.input(pin2) == GPIO.HIGH:
+        
+        if GPIO.input(pin) == GPIO.HIGH:
             self.PressIndicator.setChecked(True)
 
         else:
@@ -97,13 +96,24 @@ class Ui_MainWindow(object):
         self.LedButton.setText(_translate("MainWindow", "LED "))
         self.PressIndicator.setText(_translate("MainWindow", "O/I"))
 
-    #def short(self):
-        #pin = 17
-        #if GPIO.input(pin) == GPIO.HIGH:
-            #self.PressIndicator.setChecked(True)
+    def short(self):
+        pin = 17
+        GPIO.setup(pin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+        
+        if GPIO.input(pin) == GPIO.HIGH:
+            self.PressIndicator.setChecked(True)
 
-        #else:
-            #self.PressIndicator.setChecked(False)
+        else:
+            self.PressIndicator.setChecked(False)
+
+            
+        
+
+        
+        GPIO.add_event_detect(pin, GPIO.RISING)
+        if GPIO.event_detected(pin):
+            print("Hello, is it me you're looking for?")
+        GPIO.cleanup()
 
 
 
