@@ -64,8 +64,10 @@ class Ui_MainWindow(object):
         GPIO.setup(pin, GPIO.OUT)
         
         GPIO.output(pin, GPIO.LOW)
-        
-        
+        pin=17
+        GPIO.add_event_detect(pin, GPIO.RISING)
+        if GPIO.event_detected(pin):
+            self.PressIndicator.setChecked(True)
   
 
     def LED(self):
