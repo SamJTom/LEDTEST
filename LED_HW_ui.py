@@ -58,7 +58,7 @@ class Ui_MainWindow(object):
         #self.PressIndicator.setCheckable(True)
         #self.PressIndicator.setChecked(False)
         #self.PressIndicator.isCheckable==False
-        self.short(True)
+        self.short()
         GPIO.setmode(GPIO.BCM)
         pin = 18
         
