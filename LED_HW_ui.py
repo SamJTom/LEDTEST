@@ -55,9 +55,9 @@ class Ui_MainWindow(object):
         #self.PressIndicator.toggled.connect(self.short)
         #self.PressIndicator.event(self.short)
         #self.PressIndicator.toggled==False
-        #self.PressIndicator.setCheckable(True)
-        #self.PressIndicator.setChecked(False)
-        #self.PressIndicator.isCheckable==False
+        self.PressIndicator.setCheckable(True)
+        self.PressIndicator.setChecked(False)
+        self.PressIndicator.isCheckable==False
         self.short()
         GPIO.setmode(GPIO.BCM)
         pin = 18
@@ -72,11 +72,23 @@ class Ui_MainWindow(object):
         pin = 18
         
         if self.LedButton.isChecked() == True:
-            GPIO.output(pin, GPIO.HIGH)
+            pin2 = 17
+            GPIO.output(pin2, GPIO.HIGH)
             #self.PressIndicator.setChecked(True)
             
+            GPIO.setup(pin2, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+            if GPIO.input(pin2) == GPIO.HIGH:
+                self.PressIndicator.setChecked(True)
+
         else:
             GPIO.output(pin, GPIO.LOW)
+            pin2 = 17
+            GPIO.output(pin2, GPIO.HIGH)
+            
+            GPIO.setup(pin2, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+            if GPIO.input(pin2) == GPIO.HIGH:
+                self.PressIndicator.setChecked(True)
+
             #self.PressIndicator.setChecked(False)
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
