@@ -74,7 +74,7 @@ class Ui_MainWindow(object):
         GPIO.add_event_detect(pin, GPIO.RISING)
         if GPIO.event_detected(pin):
             print("Hello, is it me you're looking for?")
-            
+        GPIO.cleanup()    
 
 
 
