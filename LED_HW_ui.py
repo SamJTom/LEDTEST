@@ -59,13 +59,14 @@ class Ui_MainWindow(object):
         #self.PressIndicator.setChecked(False)
         #self.PressIndicator.isCheckable==False
         
-        #GPIO.setmode(GPIO.BCM)
+        GPIO.setmode(GPIO.BCM)
         #pin = 18
         
         #GPIO.setup(pin, GPIO.OUT)
         
         #GPIO.output(pin, GPIO.LOW)
         pin2=17
+        GPIO.setup(pin2, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
         GPIO.add_event_detect(pin2, GPIO.BOTH)
         GPIO.add_event_callback(pin2, self.short)
         
